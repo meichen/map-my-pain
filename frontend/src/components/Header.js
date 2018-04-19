@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Header = () => (
 	<header>
-		<h1>MapMyPain</h1>
+		<h1 className="header">MapMyPain</h1>
 
 		<nav>
 			<Link to="/"> Dashboard </Link>
