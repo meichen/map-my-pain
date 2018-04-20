@@ -8,9 +8,9 @@ import moment from 'moment'
 BigCalendar.momentLocalizer(moment) // or globalizeLocalizer
 
 const Calendar = () => (
-	<div>
+	<main>
 		<BigCalendar events={[]} startAccessor="startDate" endAccessor="endDate" />
-	</div>
+	</main>
 )
 
 export default Calendar

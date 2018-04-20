@@ -1,0 +1,19 @@
+.date-month {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.date-day {
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.date-day-number {
+	font-size: 28px;
+}
+
+.date-day-word {
+	font-size: 16px;
+}

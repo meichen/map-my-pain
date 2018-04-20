@@ -1,15 +1,30 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Header = () => (
-	<header>
-		<h1 className="header">MapMyPain</h1>
+// used icons from fontawesome
+// https://fontawesome.com/icons?d=gallery
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import ChartLine from '@fortawesome/fontawesome-free-solid/faChartLine'
+import Calendar from '@fortawesome/fontawesome-free-solid/faCalendarAlt'
+import './Header.css'
 
-		<nav>
-			<Link to="/"> Dashboard </Link>
-			<Link to="/new-entry"> New Entry </Link>
-			<Link to="/calendar"> Calendar </Link>
-		</nav>
+const Header = () => (
+	<header className="header">
+		<div className="wrapper">
+			<div className="site-logo">
+				<Link to="/">
+					<FontAwesomeIcon icon={ChartLine} /> MapMyPain
+				</Link>
+			</div>
+			<nav className="nav">
+				<Link to="/">
+					<FontAwesomeIcon icon={ChartLine} />
+				</Link>
+				<Link to="/calendar">
+					<FontAwesomeIcon icon={Calendar} />
+				</Link>
+			</nav>
+		</div>
 	</header>
 )
 

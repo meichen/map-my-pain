@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import DatePicker from 'react-datepicker'
+import { Link, withRouter } from 'react-router-dom'
 import moment from 'moment'
 import axios from 'axios'
-
-import 'react-datepicker/dist/react-datepicker.css'
+import DateTime from 'react-datetime'
+import 'react-datetime/css/react-datetime.css'
 
 class NewEntry extends Component {
 	constructor(props) {
@@ -20,14 +20,15 @@ class NewEntry extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 	}
 
+	// updates the state value of the form for what whatever key is passed
 	handleChange = key => e =>
 		this.setState({
 			form: {
-				// spreads the other form props that are not being touch
+				// spreads the other form props that are not being touched
 				...this.state.form,
 
 				// date picker doesn't pass an event, only the value.
-				// same function reusable for all fields
+				// this let me use the same function for all fields
 				[key]: e.target ? e.target.value : e
 			}
 		})
@@ -38,44 +39,52 @@ class NewEntry extends Component {
 			url: 'http://localhost:4000/journal/create',
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			//need to make sure that we convert the fields to a json object
+			// need to make sure that we convert the fields to a pure json object
 			data: JSON.stringify(this.state.form)
 		}).then(res => {
-			console.log(res)
+			// redirect back to dashboard
+			this.props.history.push('/')
 		})
 	}
 
 	render() {
 		const { form } = this.state
 		return (
-			<form onSubmit={this.handleSubmit}>
-				<div>
-					<label>Date:</label>
-					<DatePicker
-						selected={form.date}
+			<main className="wrapper">
+				<form className="form" onSubmit={this.handleSubmit}>
+					<h1>New Entry</h1>
+
+					{/* Used https://github.com/YouCanBookMe/react-datetime */}
+					<DateTime
+						timeFormat={false}
+						value={form.date}
 						onChange={this.handleChange('date')}
+						placeholder="Date"
 					/>
-				</div>
-				<div>
-					<label>Time:</label>
-					<input
-						type="text"
+					<br />
+					<DateTime
+						dateFormat={false}
 						value={form.time}
 						onChange={this.handleChange('time')}
+						placeholder="Time"
 					/>
-				</div>
-				<div>
-					<label>Description:</label>
 					<br />
 					<textarea
 						value={form.description}
 						onChange={this.handleChange('description')}
+						placeholder="Description"
 					/>
-				</div>
-
-				<input type="submit" value="Submit" />
-			</form>
+					<br />
+					<br />
+					<Link to="/" className="btn">
+						Cancel
+					</Link>
+					<button type="submit" className="btn">
+						Create New Entry
+					</button>
+				</form>
+			</main>
 		)
 	}
 }
-export default NewEntry
+export default withRouter(NewEntry)

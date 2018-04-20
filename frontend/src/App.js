@@ -9,13 +9,11 @@ import Calendar from './pages/Calendar'
 const App = () => (
 	<Fragment>
 		<Header />
-		<main>
-			<Switch>
-				<Route exact path="/" component={Dashboard} />
-				<Route exact path="/new-entry" component={NewEntry} />
-				<Route exact path="/calendar" component={Calendar} />
-			</Switch>
-		</main>
+		<Switch>
+			<Route exact path="/" component={Dashboard} />
+			<Route exact path="/new-entry" component={NewEntry} />
+			<Route exact path="/calendar" component={Calendar} />
+		</Switch>
 	</Fragment>
 )
 

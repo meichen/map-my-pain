@@ -4,7 +4,9 @@ const { EntryModel } = require('../models/Entry')
 const router = express.Router()
 
 router.get('/', (req, res) =>
-	EntryModel.find().then(entries => res.json(entries))
+	EntryModel.find().then(entries =>
+		res.json(entries.sort((cur, prev) => cur.date < prev.date))
+	)
 )
 
 router.route('/create').post(({ body: { date, time, description } }, res) =>
