@@ -36,7 +36,7 @@ class NewEntry extends Component {
 	handleSubmit(e) {
 		e.preventDefault()
 		axios({
-			url: 'http://localhost:4000/journal/create',
+			url: `${process.env.REACT_APP_API}/journal/create`,
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			// need to make sure that we convert the fields to a pure json object

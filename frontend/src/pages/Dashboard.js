@@ -16,7 +16,7 @@ class Dashboard extends Component {
 
 	componentDidMount() {
 		axios({
-			url: 'http://localhost:4000/journal',
+			url: `${process.env.REACT_APP_API}/journal`,
 			method: 'GET',
 			headers: { 'Content-Type': 'application/json' }
 		}).then(res => {
