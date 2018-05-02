@@ -2,8 +2,9 @@
   "name": "project-4_backend",
   "version": "0.0.1",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon ."
+    "start": "NODE_ENV=production node .",
+    "dev": "NODE_ENV=development nodemon .",
+    "deploy": "cross-env now && now alias"
   },
   "dependencies": {
     "body-parser": "~1.0.0",
@@ -12,6 +13,7 @@
     "mongoose": "^5.0.0-rc0"
   },
   "devDependencies": {
+    "cross-env": "^5.1.4",
     "nodemon": "^1.17.1"
   }
 }

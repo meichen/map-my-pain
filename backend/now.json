@@ -1,0 +1,9 @@
+{
+	"name": "api-mapmypain.meichen.me",
+	"alias": "api-mapmypain.meichen.me",
+	"public": false,
+	"type": "npm",
+	"env": {
+		"DATABASE_URL": "@database_url"
+	}
+}

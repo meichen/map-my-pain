@@ -20,9 +20,6 @@ const Header = () => (
 				<Link to="/">
 					<FontAwesomeIcon icon={ChartLine} />
 				</Link>
-				<Link to="/calendar">
-					<FontAwesomeIcon icon={Calendar} />
-				</Link>
 			</nav>
 		</div>
 	</header>

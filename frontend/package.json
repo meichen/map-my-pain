@@ -15,8 +15,12 @@
   },
   "scripts": {
     "start": "REACT_APP_API=http://localhost:4000 react-scripts start",
-    "build": "REACT_APP_API=https://map-my-pain.herokuapp.com react-scripts build",
+    "build": "REACT_APP_API=https://api-mapmypain.meichen.me react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "cross-env npm run build && now ./build -A ../now.json && now alias"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.4"
   }
 }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 import moment from 'moment'
 import './Dashboard.css'
@@ -15,9 +15,23 @@ class Dashboard extends Component {
 	}
 
 	componentDidMount() {
+		this.getEntries()
+	}
+
+	getEntries() {
 		axios({
 			url: `${process.env.REACT_APP_API}/journal`,
 			method: 'GET',
+			headers: { 'Content-Type': 'application/json' }
+		}).then(res => {
+			this.setState({ entries: res.data })
+		})
+	}
+
+	deleteEntry = id => () => {
+		axios({
+			url: `${process.env.REACT_APP_API}/journal/${id}`,
+			method: 'DELETE',
 			headers: { 'Content-Type': 'application/json' }
 		}).then(res => {
 			this.setState({ entries: res.data })
@@ -58,11 +72,11 @@ class Dashboard extends Component {
 		return (
 			<main className="dashboard wrapper">
 				{entries.map((entry, i) => (
-					<div key={entry._id}>
+					<Fragment key={entry._id}>
 						{this.getMonthLabel(entry, entries[i - 1])}
 						{this.getDayLabel(entry, entries[i - 1])}
-						<Entry {...entry} />
-					</div>
+						<Entry {...entry} deleteHandler={this.deleteEntry(entry._id)} />
+					</Fragment>
 				))}
 
 				<NewEntryBtn />

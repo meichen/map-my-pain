@@ -1,12 +1,17 @@
 .date-month {
 	font-size: 28px;
 	font-weight: bold;
+	margin-top: 20px;
+}
+
+.date-month:first-child {
+	margin-top: 0;
 }
 
 .date-day {
 	font-weight: bold;
 	text-transform: uppercase;
-	margin-top: 20px;
+	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
